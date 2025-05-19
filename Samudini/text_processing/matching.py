@@ -17,9 +17,6 @@ stop = set(stopwords.words('english'))  # Use set for faster lookups
 lemmatizer = WordNetLemmatizer()
 
 def get_closest_match(input_disease, me_condition, similarity_threshold=99):
-    """
-    Tìm bệnh gần giống nhất từ danh sách bệnh với điểm tương đồng tối thiểu.
-    """
     max_similarity = 0
     best_match = None
 

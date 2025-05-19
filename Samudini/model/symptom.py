@@ -12,6 +12,10 @@ def create_symptom_mapping(symptoms_list, symptom_names):
     symptom_map = [1 if symptom in symptoms_list else 0 for symptom in symptom_names]
     return symptom_map
 
+def get_doctor_type(disease):
+    result = doctype.loc[doctype['Disease'] == disease, 'Doctor']
+    return result.values[0] if not result.empty else "General"
+
 # Hàm sử dụng API để tra cứu thông tin về thuốc dựa trên danh sách các bệnh và trả về một từ điển chứa tên bệnh và danh sách các loại thuốc phù hợp.
 def get_medication_info(disease_list): #get medication using API
     medications_dict = {}
