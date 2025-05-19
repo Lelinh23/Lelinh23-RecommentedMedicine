@@ -1,0 +1,17 @@
+<!--  Navigation Bar-->
+<nav class="flex items-center text-black ">
+    <div class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 shadow-xl bg-white">
+        <a href="{{ url_for('index') }}"><img src="../static/assets/img/ayucare%20logo.png" class="w-20 cursor-pointer"></a>
+   <ul class="flex-1 text-center text-black">
+       <li class="list-none inline-block px-5 text-lg leading-lg hover:underline hover:bg-gray-200 hover:font-bold hover:rounded-full"><a href="{{ url_for('index') }}" class="no-underline px-2">Home</a></li>
+       <li class="list-none inline-block px-5 text-lg leading-lg hover:underline hover:bg-gray-200 hover:font-bold hover:rounded-full"><a href="{{ url_for('service.service_route') }}" class="no-underline px-2">Drug recommendation system</a></li>
+       <li class="list-none inline-block px-5 text-lg leading-lg hover:underline hover:bg-gray-200 hover:font-bold hover:rounded-full"><a href="{{ url_for('admin.faq') }}" class="no-underline px-2">Drug recommendation system without save consultation</a></li>
+       <li class="list-none inline-block px-5 text-lg leading-lg hover:underline hover:bg-gray-200 hover:font-bold hover:rounded-full">
+         <a href="{{ url_for('service.re_drugs_review') }}" class="no-underline px-2">Drug recommendations by description</a></li>
+     </ul>
+        <a href="{{ url_for('auth.signin') }}">
+             <button class="bg-black text-white active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 rounded-full px-6" type="button" style="transition: all 0.15s ease 0s;"> Sign In </button>
+            </a>
+    </div>
+</nav>
+<!--  Navigation Bar-->

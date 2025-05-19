@@ -1,0 +1,101 @@
+<div id="form1Container" class="formContainer">
+  <div id="txts">
+    <!-- Name Input -->
+    <div class="input-container">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="floating-input"
+        onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || event.charCode == 32) && event.code !== 'Space'"
+      />
+    </div>
+
+    <!-- Age Input -->
+    <div class="input-container">
+      <label for="age">Age</label>
+      <input
+        type="text"
+        id="age"
+        name="age"
+        class="floating-input"
+        onkeydown="javascript: return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code !== 'Space'"
+      />
+    </div>
+
+    <!-- Weight and Height Inputs -->
+    <div id="ht-wt">
+      <div class="input-container">
+        <label for="weight">Weight</label>
+        <input
+          type="text"
+          id="weight"
+          name="weight"
+          class="floating-input"
+          onkeydown="javascript: return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code !== 'Space'"
+        />
+        <span class="tooltip">Weight in <b>kg</b></span>
+      </div>
+
+      <div class="input-container">
+        <label for="height">Height</label>
+        <input
+          type="text"
+          id="height"
+          name="height"
+          class="floating-input"
+          onkeydown="javascript: return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code !== 'Space'"
+        />
+        <span class="tooltip">Height in <b>cm</b></span>
+      </div>
+    </div>
+
+    <!-- Gender Radio Buttons -->
+    <div class="input-container-radio">
+      <label>Gender:</label>
+      <input type="radio" id="male" name="gender" value="male" />
+      <label for="male" class="gend">Male</label>
+      <input type="radio" id="female" name="gender" value="female" />
+      <label for="female" class="gend">Female</label>
+    </div>
+
+    <!-- Alcohol Consumption -->
+    <div class="input-container-radio" id="alcohol" style="display: none;">
+      <label>Do you drink alcohol?</label>
+      <input type="radio" id="yes" name="alcohol" value="['N']" />
+      <label for="yes">Yes</label>
+      <input type="radio" id="no" name="alcohol" value="['X','N']" />
+      <label for="no">No</label>
+    </div>
+
+    <!-- Smoking -->
+    <div class="input-container-radio" id="cigar" style="display: none;">
+      <label>Do you smoke cigarettes?</label>
+      <input type="radio" id="yes" name="cigar" value="Yes" />
+      <label for="yes">Yes</label>
+      <input type="radio" id="no" name="cigar" value="No" />
+      <label for="no">No</label>
+    </div>
+
+    <!-- Pregnancy -->
+    <div class="input-container-radio" id="pregyesno" style="display: none;">
+      <label>Are you currently pregnant?</label>
+      <input type="radio" id="yes" name="pregyesno" value="Yes" />
+      <label for="yes">Yes</label>
+      <input type="radio" id="no" name="pregyesno" value="No" />
+      <label for="no">No</label>
+    </div>
+
+    <!-- Trimester -->
+    <div class="input-container-radio" id="trisemister" style="display: none;">
+      <label>Which trimester are you in?</label>
+      <input type="radio" id="one" name="trisemister" value="['A','B','C','D']" />
+      <label for="one">1</label>
+      <input type="radio" id="two" name="trisemister" value="['A','B','C']" />
+      <label for="two">2</label>
+      <input type="radio" id="three" name="trisemister" value="['A','B','C']" />
+      <label for="three">3</label>
+    </div>
+  </div>
+</div>

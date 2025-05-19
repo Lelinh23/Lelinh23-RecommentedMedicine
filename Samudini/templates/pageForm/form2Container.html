@@ -1,0 +1,13 @@
+<div id="form2Container" class="formContainer"><br>
+    <div id="note"><span style="color:red;">*</span> Select at least 3 symptoms for better results</div>
+    <div class="dropdown">
+      <div class="dropdown-select"></div>
+      <input type="text" placeholder="Tìm kiếm triệu chứng" id="search-input">
+      <div class="dropdown-content" id="dropdown-content" style="font: .8em verdana;">
+        <!-- Các nút button sẽ được tạo động ở đây -->
+        {% for symptom in symptoms %}
+        <button class="selectedButton" value="{{ symptom.0 }}">{{ symptom.1 }}</button>
+        {% endfor %}
+      </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div id="form3Container" class="formContainer">
+    {% if response2 %}
+    <div id="results" style="width:fit-content;height:fit-content;">
+        <h3>Prediction Results:</h3>
+        <ul>
+            {% for disease_detail in response2 %}
+            <li>
+                <strong>Disease:</strong> {{ disease_detail.disease }}<br>
+                <strong>Probability:</strong> {{ disease_detail.probability }}%<br>
+                <strong>Precautions:</strong> {{ disease_detail.precautions|join:", " }}<br>
+                <strong>Recommended Doctor:</strong> {{ disease_detail.doc_type }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" />
+    {% include 'script.html' %}
+    <title>Service</title>
+</head>
+<body class="container">
+    {#    Navigation Bar#}
+    {% include 'navigation/lefbar.html' %}
+    <div class="right">
+      <div class="top">
+        <button id="menu-btn">
+          <span class="material-icons-sharp">menu</span>
+        </button>
+        
+        <div class="theme-Toggler">
+          <span class="material-icons-sharp active">light_mode</span>
+        </div>
+  
+        <div class="profile">
+          <div class="info">
+            <p>Hey, <b>NAME</b></p>
+            <small class="text-muted">{{ name }}</small>
+            <div class="profile-photo">
+               comment  <img src="../static/assets/img/avatar.png" alt="img">  endcomment 
+            </div>
+          </div>
+      </div>
+    </div>
+    <main>
+      <h1>Edit Pages</h1>
+      <div class="insights">
+        <!-- ##################SALES################# -->
+        <div class="sales">
+          <div class="middle">
+            <div class="left">
+              <a href="{{ url_for('admin.edit_pageTermsServices') }}">
+                <h1>Terms and Services</h1>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- ###############Expenses############### -->
+        <div class="expenses">
+          <div class="middle">
+            <div class="left">
+              <a href="{{ url_for('admin.edit_pageHome') }}">
+                <h1>Home Page</h1>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!--################################INCOME####################  -->
+        <div class="income">
+          <span class="material-icons-sharp">
+            stacked_line_chart</span>
+          <div class="middle">
+            <div class="left">
+              <h3>Total Income</h3>
+              <h1>000000</h1>
+            </div>
+            <div class="progress">
+              <svg>
+                <circle cx='38' cy='38' r='36'></circle>
+              </svg>
+              <div class="number">
+                <p>50%</p>
+              </div>
+            </div>
+          </div>
+          <small class="text-muted">Last 24 hrs</small>
+        </div>
+        <!-- end of income -->
+      </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<div id="form0Container">
+  <div id="open0"><h2>{{ data['title'] }}</h2></div>
+  <div id="open1">{{ data['description'] }}</div>
+  <div id="open2">
+    <ul>
+      {% for term in data['terms'] %}
+          <li><span>{{ term }}</span></li>
+      {% endfor %}
+  </ul>
+  </div>
+  <div id="open3">
+    <label style="font-family: 'Ubuntu', sans-serif; font-weight:bolder;">{{ data['confirmation'] }}</label>
+    <input type="checkbox" id="t-c" required />
+  </div>
+</div>  

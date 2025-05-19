@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-6">
+        <h1 class="text-2xl font-bold mb-4">Doctor List</h1>
+        <table class="table-auto w-full bg-white shadow-md rounded">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="px-4 py-2">ID</th>
+                    <th class="px-4 py-2">First Name</th>
+                    <th class="px-4 py-2">Last Name</th>
+                    <th class="px-4 py-2">Age</th>
+                    <th class="px-4 py-2">Gender</th>
+                    <th class="px-4 py-2">Email</th>
+                    <th class="px-4 py-2">Address</th>
+                    <th class="px-4 py-2">Disease</th>
+                    <th class="px-4 py-2">Specialization</th>
+                    <th class="px-4 py-2">Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doctor in doctors %}
+                <tr class="text-center border-t">
+                    <td class="px-4 py-2">{{ doctor.id }}</td>
+                    <td class="px-4 py-2">{{ doctor.firstname }}</td>
+                    <td class="px-4 py-2">{{ doctor.lastname }}</td>
+                    <td class="px-4 py-2">{{ doctor.age }}</td>
+                    <td class="px-4 py-2">{{ doctor.gender }}</td>
+                    <td class="px-4 py-2">{{ doctor.email }}</td>
+                    <td class="px-4 py-2">{{ doctor.address }}</td>
+                    <td class="px-4 py-2">{{ doctor.disease }}</td>
+                    <td class="px-4 py-2">{{ doctor.specialization }}</td>
+                    <td class="px-4 py-2">{{ doctor.star }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="9" class="px-4 py-2 text-center">No doctors found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

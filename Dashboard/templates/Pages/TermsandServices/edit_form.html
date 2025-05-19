@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" />
+    <!-- Include Bootstrap JS (Optional for dynamic functionality) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    {% include 'script.html' %}
+    <title>Edit Terms</title>
+</head>
+<body class="container">
+    {% include 'navigation/lefbar.html' %}
+    <div class="right">
+        <div class="top">
+          <button id="menu-btn">
+            <span class="material-icons-sharp">menu</span>
+          </button>
+          
+          <div class="theme-Toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+          </div>
+    
+          <div class="profile">
+            <div class="info">
+              <p>Hey, <b>NAME</b></p>
+              <small class="text-muted">{{ name }}</small>
+              <div class="profile-photo">
+                 comment  <img src="../static/assets/img/avatar.png" alt="img">  endcomment 
+              </div>
+            </div>
+        </div>
+      </div>
+    <h1>Edit Terms and Services</h1>
+    <form id="updateForm" action="{{ url_for('admin.update_pageTermsServices') }}" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label"><h3>Title:</h3></label>
+            <input type="text" name="title" id="title" value="{{ data['title'] }}" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea name="description" id="description" rows="5" class="form-control" required>{{ data['description'] }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="terms" class="form-label">Terms:</label>
+            <ul id="terms-list" class="list-group">
+                {% for term in data['terms'] %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <input type="text" name="terms[]" value="{{ term }}" class="form-control" required />
+                        <button type="button" class="btn btn-danger btn-sm" onclick="removeTerm(this)">Remove</button>
+                    </li>
+                {% endfor %}
+            </ul>
+            <button type="button" class="btn btn-primary mt-2" onclick="addTerm()">Add New Term</button>
+        </div>
+        <div class="mb-3">
+            <label for="confirmation" class="form-label">Confirmation Text:</label>
+            <input type="text" name="confirmation" id="confirmation" value="{{ data['confirmation'] }}" class="form-control" required />
+        </div>
+        <div class="flex justify-center mb-4">
+            <button type="submit" class="btn btn-success w-100">
+                <a class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Update
+            </a></button>
+        </div>
+    </form>
+
+    <!-- Hiển thị thông báo -->
+    <div id="responseMessage" class="alert" style="display:none; margin-top: 10px;">
+        <span id="responseText"></span>
+    </div>
+    
+
+<script>
+    // Thêm một trường mới vào danh sách terms
+    function addTerm() {
+        const list = document.getElementById('terms-list');
+        const li = document.createElement('li');
+        li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+        li.innerHTML = `
+            <input type="text" name="terms[]" class="form-control" required />
+            <button type="button" class="btn btn-danger btn-sm" onclick="removeTerm(this)">Remove</button>
+        `;
+        list.appendChild(li);
+    }
+
+    function removeTerm(button) {
+        button.parentElement.remove();
+    }
+</script>
+</body>
+</html>

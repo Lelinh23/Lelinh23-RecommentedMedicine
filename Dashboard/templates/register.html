@@ -1,0 +1,81 @@
+<!Doctype html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="shortcut icon" href="../static/assets/img/ayucare%20logo.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Registration Page</title>
+</head>
+<body class="bg-gray-300">
+
+      <br>
+      <br>
+      <br>
+        {#      Form part#}
+        <div class="flex justify-center items-center h-screen  place-items-center ">
+          <div id="form" class="block bg-slate-50 p-6 rounded-xl shadow-md shadow-slate-300 w-90 py-16">
+            <form method="post">
+                <!-- Hidden CSRF Token -->
+                {{ form.hidden_tag() }}
+                
+                <center>
+                    <h2 class="text-black text-3xl font-semibold my-4">Register</h2>
+                </center>
+                
+                <!-- Full Name -->
+                <div id="fullName" class="flex flex-row">
+                    <!-- First Name -->
+                    <div id="firstName" class="w-1/2 mr-1">
+                        {{ form.firstname.label(class="text-sm") }}
+                        {{ form.firstname(class="h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent shadow-sm") }}
+                    </div>
+                    <!-- Last Name -->
+                    <div id="lastName" class="w-1/2 mr-1">
+                        {{ form.lastname.label(class="text-sm") }}
+                        {{ form.lastname(class="h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent shadow-sm") }}
+                    </div>
+                </div>
+                
+                <!-- Age -->
+                {{ form.age.label(class="text-sm") }}<br>
+                {{ form.age(class="h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent shadow-sm") }}
+                
+                <!-- Gender -->
+                <div id="gender" class="text-sm mb-2">
+                    {{ form.gender.label(class="mt-2") }}
+                    {{ form.gender(class="h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent shadow-sm") }}
+                </div>
+                
+                <!-- Email -->
+                {{ form.email.label(class="text-sm") }}<br>
+                {{ form.email(class="h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent shadow-sm") }}
+                
+                <!-- Address -->
+                {{ form.address.label(class="text-sm") }}<br>
+                {{ form.address(class="h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent shadow-sm") }}
+                
+                <!-- Password -->
+                {{ form.password.label(class="text-sm") }}<br>
+                {{ form.password(class="h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent shadow-sm") }}
+                
+                <!-- Confirm Password -->
+                {{ form.confirmpassword.label(class="text-sm") }}<br>
+                {{ form.confirmpassword(class="h-8 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent shadow-sm") }}
+
+                
+                <!-- Past Medical Conditions -->
+                {{ form.pastcondition.label(class="text-sm") }}<br>
+                {{ form.pastcondition(class="h-20 w-full rounded-md border border-slate-300 text-sm pl-2 bg-transparent shadow-sm") }}
+                
+                <!-- Submit Button -->
+                {{ form.submit(class="bg-black w-full h-10 cursor-pointer text-white rounded-md text-sm") }}<br>
+                
+                <p class="text-xs my-2">Already have an account? 
+                    <a href="{{ url_for('auth.signin') }}" class="text-blue-600">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

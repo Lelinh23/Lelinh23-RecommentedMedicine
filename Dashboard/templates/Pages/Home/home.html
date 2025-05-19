@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" />
+    <!-- Include Bootstrap JS (Optional for dynamic functionality) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    {% include 'script.html' %}
+    <title>Edit Page Home</title>
+</head>
+<body class="container">
+    {% include 'navigation/lefbar.html' %}
+    <div class="right">
+        <div class="top">
+          <button id="menu-btn">
+            <span class="material-icons-sharp">menu</span>
+          </button>
+          
+          <div class="theme-Toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+          </div>
+    
+          <div class="profile">
+            <div class="info">
+              <p>Hey, <b>NAME</b></p>
+              <small class="text-muted">{{ name }}</small>
+              <div class="profile-photo">
+                 comment  <img src="../static/assets/img/avatar.png" alt="img">  endcomment 
+              </div>
+            </div>
+        </div>
+      </div>
+    
+<main>
+        <!-- Form Header -->
+    <h1>Edit Slide Page Home</h1>
+    <form id="updateForm" action="{{ url_for('admin.update_HomePage') }}" method="POST">
+        <div class="mb-3">
+            <label for="header_title" class="form-label"><h3>Title:</h3></label>
+            <input type="text" name="header_title" id="header_title" value="{{ data_header['title'] }}" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="header_description" class="form-label">Description:</label>
+            <textarea name="header_description" id="header_description" rows="3" class="form-control" required>{{ data_header['content'] }}</textarea>
+        </div>
+        <div class="flex justify-center mb-4">
+            <button type="submit" class="btn btn-success w-100">Update Content Slide</button>
+        </div>
+    </form>
+
+    <!-- Section 1 -->
+    <h1>Edit Service Page Home</h1>
+    <form id="updateForm_section1" action="{{ url_for('admin.update_HomePage') }}" method="POST">
+        <div id="sections">
+            {% for section in data_section1 %}
+            <div class="section mb-5 border border-gray-300 p-4 rounded">
+                <div class="mb-3">
+                    <label for="section1_title_{{ loop.index }}" class="form-label"><h3>Title:</h3></label>
+                    <input type="text" name="section1_title_{{ loop.index }}" id="section1_title_{{ loop.index }}" value="{{ section['title'] }}" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label for="section1_description_{{ loop.index }}" class="form-label">Description:</label>
+                    <textarea rows="3" name="section1_description_{{ loop.index }}" id="section1_description_{{ loop.index }}" class="form-control" required>{{ section['content'] }}</textarea>
+                </div>
+                <button type="button" class="btn btn-danger btn-sm" onclick="removeSection(this)">Remove</button>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="mb-4">
+            <button type="button" class="btn btn-primary mt-2" onclick="addSection()">Add New Section</button>
+        </div>
+        <div class="flex justify-center mb-4">
+            <button type="submit" class="btn btn-success w-100">Update Services</button>
+        </div>
+    </form>
+
+    <!-- Section 2 -->
+    <h1>Edit About Page Home</h1>
+    <form id="updateForm_section2" action="{{ url_for('admin.update_HomePage') }}" method="POST">
+        <div class="mb-3">
+            <label for="section2_title" class="form-label"><h3>Title:</h3></label>
+            <input type="text" name="section2_title" id="section2_title" value="{{ data_section2['title'] }}" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="section2_description" class="form-label">Description:</label>
+            <textarea name="section2_description" id="section2_description" rows="3" class="form-control" required>{{ data_section2['content'] }}</textarea>
+        </div>
+        <div class="flex justify-center mb-4">
+            <button type="submit" class="btn btn-success w-100">Update Content About</button>
+        </div>
+    </form>
+
+</main>
+    <script>
+        // Function to remove a section
+        function removeSection(button) {
+            const section = button.closest('.section');
+            section.remove();
+        }
+    
+        // Function to add a new section
+        function addSection() {
+            const sectionsContainer = document.getElementById('sections');
+            const sectionCount = sectionsContainer.children.length;
+    
+            const newSection = document.createElement('div');
+            newSection.classList.add('section', 'mb-5', 'border', 'border-gray-300', 'p-4', 'rounded');
+    
+            newSection.innerHTML = `
+                <div class="mb-3">
+                    <label for="title_${sectionCount}" class="form-label"><h3>Title:</h3></label>
+                    <input type="text" name="sections[${sectionCount}][title]" id="title_${sectionCount}" 
+                           value="" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label for="description_${sectionCount}" class="form-label">Description:</label>
+                    <textarea name="sections[${sectionCount}][content]" id="description_${sectionCount}" 
+                              rows="3" class="form-control" required></textarea>
+                </div>
+                <button type="button" class="btn btn-danger btn-sm" onclick="removeSection(this)">Remove</button>
+            `;
+            sectionsContainer.appendChild(newSection);
+        }
+    </script>
+</body>
+</html>

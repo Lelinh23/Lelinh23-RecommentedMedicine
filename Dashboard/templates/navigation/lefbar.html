@@ -1,0 +1,64 @@
+<aside>
+    <div class="top">
+      <div class="logo">
+        <h2>A<span class="danger">board</span></h2>
+      </div>
+
+      <div class="sidebar">
+
+        <a href="{{ url_for('index') }}">
+          <span class="material-icons-sharp">grid_view</span>
+          <h3>Dashboard</h3>
+        </a>
+
+        <a href="{{ url_for('auth.list_user') }}">
+          <span class="material-icons-sharp">person_outline</span>
+          <h3>User</h3>
+        </a>
+
+        <a href="{{ url_for('auth.funtionD') }}">
+          <span class="material-icons-sharp">supervisor_account</span>
+          <h3>Doctor</h3>
+        </a>
+
+        <a href="{{ url_for('admin.consultation_dease') }}">
+          <span class="material-icons-sharp">receipt_long</span>
+          <h3>Consultation</h3>
+        </a>
+        <a href="{{ url_for('admin.manager_pages') }}">
+          <span class="material-icons-sharp">insights</span>
+          <h3>Pages</h3>
+        </a>
+
+        <a href="messages">
+          <span class="material-icons-sharp">mail_outline</span>
+          <h3>Messages</h3>
+          <span class="message-count">26</span>
+        </a>
+
+        <a href="drugs">
+          <span class="material-icons-sharp">medication</span>
+          <h3>Drugs</h3>
+        </a>
+
+        <a href="reports">
+          <span class="material-icons-sharp">report_gmailerrorred</span>
+          <h3>Reports</h3>
+        </a>
+        
+        {% if current_user.is_authenticated %}
+          <a href="{{ url_for('auth.logout') }}">
+              <span class="material-icons-sharp">logout</span>
+              <h3>Logout</h3>
+          </a>
+        {% else %}
+          <a href="{{ url_for('auth.register') }}">
+              <span class="material-icons-sharp">person_add</span>
+              <h3>Register</h3>
+          </a>
+        {% endif %}
+
+
+      </div>
+    </div>
+  </aside>
